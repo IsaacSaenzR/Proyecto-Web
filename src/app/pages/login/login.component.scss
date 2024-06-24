@@ -11,11 +11,10 @@ html, body {
   display: flex;
   align-items: center; 
   justify-content: center; 
-  background: #d7fad7;
 }
 
 #fondo {
-  background-image: url('https://i.pinimg.com/736x/92/b2/b7/92b2b7f0b520bbf944e2d9c5507688bb.jpg'); /* Asegúrate de reemplazar con la ruta correcta de tu imagen */
+  background-image: url('../../../assets/ods-grande.png'); /* Asegúrate de reemplazar con la ruta correcta de tu imagen */
   background-size: cover; /* Esto hará que la imagen cubra todo el elemento */
   background-position: center; /* Esto centrará la imagen en el elemento */
   }
