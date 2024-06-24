@@ -1,1 +1,35 @@
-<p>calendario works!</p>
+<div class="p-4 max-w-3xl mx-auto">
+    <!-- Campo de Búsqueda -->
+    <div class="relative mb-4">
+      <input
+        type="text"
+        placeholder="Search"
+        class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+      />
+      <svg
+        class="absolute right-2 top-2 h-6 w-6 text-gray-400"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M8 2a6 6 0 100 12 6 6 0 000-12zm0 1a5 5 0 110 10A5 5 0 018 3zm7.707 10.707a1 1 0 00-1.414-1.414l-2.829 2.828A8 8 0 108 18a8 8 0 006.293-2.293l2.829-2.828a1 1 0 00-.707-1.707z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </div>
+  
+    <!-- Navegación de Eventos -->
+    <div class="flex border-b border-gray-300 mb-4">
+      <a routerLink="./" routerLinkActive="border-green-600 text-green-600 border-b-2" [routerLinkActiveOptions]="{ exact: true }" class="flex-1 py-2 focus:outline-none text-center text-gray-500">
+        Todos los Eventos
+      </a>
+      <a routerLink="MisEventos" routerLinkActive="border-green-600 text-green-600 border-b-2" [routerLinkActiveOptions]="{ exact: true }" class="flex-1 py-2 text-gray-500 focus:outline-none text-center">
+        Mis eventos
+      </a>
+    </div>
+  
+    <router-outlet></router-outlet>
+  </div>
+  
