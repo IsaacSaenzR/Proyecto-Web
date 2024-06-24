@@ -46,6 +46,7 @@
                 }
               </div>
               <button class="text-white bg-lime-500 border-0 py-2 px-8 focus:outline-none hover:bg-lime-400 rounded text-lg" (click)="Registro()">Registrarse</button>
+              <a class="text-white text-center mt-4 cursor-pointer bg-lime-500 border-0 py-2 px-8 focus:outline-none hover:bg-lime-400 rounded text-lg" routerLink="/login">Iniciar Session</a>
               @if(errorEnvio['contraseñaR2'] || errorEnvio['contraseñaR'] || errorEnvio['nomUsuarioR'] || errorEnvio['edad']) {
                 <span style="color:red; font-size: small;">Error en el formulario</span>
               }
