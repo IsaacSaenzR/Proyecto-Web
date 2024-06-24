@@ -4,7 +4,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { HeaderComponent } from './header/header.component';
 
-
 @Component({
   selector: 'app-root',
   standalone: true,

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-//import { Router } from 'express';
+import Swal from 'sweetalert2';
+import { ServiceloginService } from '../../services/services-login/servicelogin.service';
 
 @Component({
   selector: 'app-login',
@@ -12,18 +13,40 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   public forms: FormGroup;
-  constructor(private route:Router){
-      this.forms = new FormGroup({
-        email: new FormControl('', [Validators.required, Validators.email]),
-        password: new FormControl('',[Validators.required])
-    })
+
+  constructor(private router: Router, private loginService: ServiceloginService) {
+    this.forms = new FormGroup({
+      username: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required])
+    });
   }
-  Iniciar(){
-    if(this.forms.valid)
-      this.route.navigateByUrl("Dashboard");
-    //console.log("Enviado")
+
+  Iniciar(): void {
+    if (this.forms.valid) {
+      this.loginService.login(this.forms.controls['username'].value, this.forms.controls['password'].value).subscribe(
+        resultado => {
+          Swal.fire({
+            title: "Listo",
+            icon: "success",
+            text: "Bienvenido " + resultado.username
+          });
+          this.router.navigateByUrl("/chat");
+        },
+        error => {
+          console.error(error);
+          Swal.fire({
+            title: "Error",
+            icon: "error",
+            text: "Usuario o contraseña incorrectos"
+          });
+        }
+      );
+    } else {
+      Swal.fire({
+        title: "Error",
+        icon: "error",
+        text: "Por favor complete todos los campos"
+      });
+    }
   }
-  
-  
-  
 }
