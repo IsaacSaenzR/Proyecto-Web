@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
-import { ServiceloginService } from '../../services/services-login/servicelogin.service';
+import { ServiceloginService } from '../../Services/services-login/servicelogin.service';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +30,11 @@ export class LoginComponent {
             icon: "success",
             text: "Bienvenido " + resultado.username
           });
-          this.router.navigateByUrl("/chat");
+
+          // Para almacenar informacion
+          sessionStorage.setItem("usuario", JSON.stringify(resultado));
+
+          this.router.navigateByUrl("/ODS/inicio");
         },
         error => {
           console.error(error);
