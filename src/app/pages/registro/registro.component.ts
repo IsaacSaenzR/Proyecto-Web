@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ServiceloginService } from '../../Services/services-login/servicelogin.service';
+//import { ServiceloginService } from '../../services/services-login/servicelogin.service';
 
 @Component({
   selector: 'app-registro',

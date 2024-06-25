@@ -23,6 +23,7 @@ export class LoginComponent {
   }
 
   Iniciar(): void {
+    sessionStorage.setItem("usuario", JSON.stringify({"nombreUsuario":"Ale"}));
     if (this.forms.valid) {
       this.loginService.login(this.forms.controls['username'].value, this.forms.controls['password'].value).subscribe(
         resultado => {
