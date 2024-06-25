@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ChatserviceService } from '../../Services/service-chat/chatservice.service';
 import { CommonModule } from '@angular/common';
-import { ChatserviceService } from '../../services/service-chat/chatservice.service';
 
 @Component({
   selector: 'app-chat',
@@ -13,6 +13,7 @@ import { ChatserviceService } from '../../services/service-chat/chatservice.serv
 export class ChatComponent implements OnInit {
   messages: any[] = [];
   chatForm: FormGroup;
+  currentUser: string = 'user1';  //
 
   constructor(private chatService: ChatserviceService) {
     this.chatForm = new FormGroup({
@@ -38,7 +39,7 @@ export class ChatComponent implements OnInit {
   sendMessage(): void {
     const message = this.chatForm.controls['message'].value;
     if (message.trim() !== '') {
-      const newMessage = { user: 'user1', text: message, timestamp: new Date() };
+      const newMessage = { user: this.currentUser, text: message, timestamp: new Date() };
       this.chatService.sendMessage(newMessage).subscribe(
         (data) => {
           this.messages.push(data);
@@ -51,3 +52,4 @@ export class ChatComponent implements OnInit {
     }
   }
 }
+
