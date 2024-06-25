@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { UsuarioService } from '../../Services/usuario.service';
 import Swal from 'sweetalert2';
+import { ServiceloginService } from '../../services/services-login/servicelogin.service';
 
 @Component({
   selector: 'app-registro',
@@ -17,7 +17,7 @@ export class RegistroComponent {
   public escribiendo: { [key: string]: boolean } = {};
 
   // Usarlo como atributo de clase
-  constructor(private route:Router, private logService:UsuarioService){
+  constructor(private route:Router, private logService:ServiceloginService){
     this.Registrar = new FormGroup({
       nomUsuario: new FormControl("", [Validators.required]/*, Validators.email*/),
       contraseña: new FormControl("", [Validators.required]),
@@ -51,12 +51,16 @@ export class RegistroComponent {
   
   Registro() {
     if(this.Registrar.valid) {
-      this.logService.Registro(this.Registrar.controls['nomUsuario'].value, this.Registrar.controls['contraseña'].value, this.Registrar.controls['edad'].value).subscribe(resultado => {
+      this.logService.registrar(this.Registrar.controls['nomUsuario'].value, this.Registrar.controls['contraseña'].value, this.Registrar.controls['edad'].value).subscribe(resultado => {
         Swal.fire({
           title:"Listo",
           icon: "success",
           text: "Usuario registrado: " + resultado.nombreUsuario
         });
+        
+        // Para almacenar informacion
+        sessionStorage.setItem("usuario", JSON.stringify(resultado));
+
         this.route.navigateByUrl("ODS/inicio");
       })
     }

@@ -30,7 +30,11 @@ export class LoginComponent {
             icon: "success",
             text: "Bienvenido " + resultado.username
           });
-          this.router.navigateByUrl("/chat");
+
+          // Para almacenar informacion
+          sessionStorage.setItem("usuario", JSON.stringify(resultado));
+
+          this.router.navigateByUrl("/ODS/inicio");
         },
         error => {
           console.error(error);
