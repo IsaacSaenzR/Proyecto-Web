@@ -10,7 +10,7 @@ import { EventosAService } from '../Services/eventos-a.service';
 })
 export class CitasComponent {
   public events: any;
-  public datos: any;
+  public datos: any = {};
 
   constructor(private eventbriteService: EventosAService) { 
     var usu = sessionStorage.getItem("usuario")

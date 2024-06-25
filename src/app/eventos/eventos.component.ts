@@ -10,7 +10,7 @@ import { EventosAService } from '../Services/eventos-a.service';
 })
 export class EventosComponent {
   public events: any;
-  public datosEven: any;
+  public datosEven: any = {};
 
   constructor(private eventbriteService: EventosAService) { }
 
@@ -28,7 +28,8 @@ export class EventosComponent {
 
   clickAgregar(id:string) {
     var us = sessionStorage.getItem('usuario')
-    this.datosEven['nombreUsuario'] = JSON.parse(us?us:"");
+    var nom = JSON.parse(us?us:"");
+    this.datosEven['nombreUsuario'] = nom.nombreUsuario;
     this.datosEven['id'] = id
     this.eventbriteService.agregar(this.datosEven.id,this.datosEven.nombreUsuario)
   }
