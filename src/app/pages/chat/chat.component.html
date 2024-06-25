@@ -2,11 +2,11 @@
   <div id="wrapper">
     <div id="menu" class="d-flex justify-content-between align-items-center mb-3">
       <p class="welcome">Welcome to Chat</p>
-      <p class="logout"><a id="exit" href="#" class="text-white">Exit Chat</a></p>
+      <p class="logout"><a id="exit" href="/ODS/inicio" class="text-white">Exit Chat</a></p>
     </div>
 
     <div id="chatbox">
-      <div *ngFor="let msg of messages" [ngClass]="{'user-message': msg.user === currentUser, 'other-message': msg.user !== currentUser}">
+      <div *ngFor="let msg of messages" [ngClass]="{'user-message': msg.user === datosUser.nombreUsuario, 'other-message': msg.user !== datosUser.nombreUsuario}">
         <p><span class="user-name">{{ msg.user }}:</span> {{ msg.text }}</p>
       </div>
     </div>
@@ -15,10 +15,5 @@
       <input formControlName="message" type="text" id="usermsg" class="form-control mr-2" placeholder="Enter your message" />
       <button type="submit" id="submitmsg" class="btn btn-primary">Send</button>
     </form>
-  </div>
+  </div>
 </div>
-
-
-
-
-
