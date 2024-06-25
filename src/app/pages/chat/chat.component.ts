@@ -14,14 +14,15 @@ export class ChatComponent implements OnInit {
   messages: any[] = [];
   chatForm: FormGroup;
   datosUser: any;
+  currentUser: any;
 
   constructor(private chatService: ChatserviceService) {
     this.chatForm = new FormGroup({
       message: new FormControl('')
     });
 
-    var user = sessionStorage.getItem("usuario");
-    this.datosUser = JSON.parse(user?user:"");
+    var currentUser = sessionStorage.getItem("usuario");
+    this.datosUser = JSON.parse(currentUser?currentUser:"");
   }
 
   ngOnInit(): void {
