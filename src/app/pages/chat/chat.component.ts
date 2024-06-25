@@ -13,12 +13,15 @@ import { CommonModule } from '@angular/common';
 export class ChatComponent implements OnInit {
   messages: any[] = [];
   chatForm: FormGroup;
-  currentUser: string = 'user1';  //
+  datosUser: any;
 
   constructor(private chatService: ChatserviceService) {
     this.chatForm = new FormGroup({
       message: new FormControl('')
     });
+
+    var user = sessionStorage.getItem("usuario");
+    this.datosUser = JSON.parse(user?user:"");
   }
 
   ngOnInit(): void {
@@ -39,7 +42,7 @@ export class ChatComponent implements OnInit {
   sendMessage(): void {
     const message = this.chatForm.controls['message'].value;
     if (message.trim() !== '') {
-      const newMessage = { user: this.currentUser, text: message, timestamp: new Date() };
+      const newMessage = { user: this.datosUser.nombreUsuario, text: message, timestamp: new Date() };
       this.chatService.sendMessage(newMessage).subscribe(
         (data) => {
           this.messages.push(data);

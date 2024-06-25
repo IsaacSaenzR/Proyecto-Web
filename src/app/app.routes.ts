@@ -7,6 +7,8 @@ import { CalculadoraComponent } from './pages/calculadora/calculadora.component'
 import { RegistroComponent } from './pages/registro/registro.component';
 import { CitasComponent } from './citas/citas.component';
 import { EventosComponent } from './eventos/eventos.component';
+import { InicioComponent } from './pages/inicio/inicio.component';
+import { ProductsComponent } from './pages/products/products.component';
 
 export const routes: Routes = [
     {path:'', component:LoginComponent},
@@ -14,7 +16,7 @@ export const routes: Routes = [
     {path:'registrar', component:RegistroComponent},
     {path: 'ODS', component:LayoutBaseComponent, pathMatch:'prefix',
         children: [
-            {path:'inicio', component:CalculadoraComponent, pathMatch:'full'},
+            {path:'inicio', component:InicioComponent, pathMatch:'full'},
             {path:'chat', component:ChatComponent, pathMatch: 'full'},
             {path:'calendario', component:CalendarioComponent, pathMatch:'prefix',
                 children:[
@@ -23,7 +25,7 @@ export const routes: Routes = [
                 ]
             },
             {path:'calculadora', component:CalculadoraComponent},
-            {path:'guia', component:CalculadoraComponent},
+            {path:'guia', component:ProductsComponent},
         ]
     }
 ];
