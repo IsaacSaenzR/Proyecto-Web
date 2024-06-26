@@ -3,6 +3,8 @@ module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
     extend: {
+      backgroundColor: ['group-hover'],
+      gradientColorStops: ['group-hover'],
       keyframes: {
         'spinner-grow': {
           '0%': { transform: 'scale(0)' },

@@ -2,7 +2,7 @@
    @for(evento of events; track evento){
     <div class="flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden mb-4">
         <div class="md:flex">
-            <img class="md:w-1/5 w-full object-cover" src="https://randomuser.me/api/portraits/men/1.jpg" alt="Event image">
+            <img class="md:w-1/5 w-full object-cover" src="https://randomuser.me/api/portraits/men/{{evento.id}}.jpg" alt="Event image">
             <div class="md:w-2/5 w-full p-4">
                 <H3 class="text-lg font-semibold">{{evento.name}}</H3>
                 <p class="text-gray-600">{{evento.date}}</p>
@@ -10,7 +10,7 @@
                 <p class="text-gray-60">{{evento.description}}</p>
             </div>
             <div class="md:w-2/5 w-full flex items-center justify-center p-2">
-                <button (click)="clickAgregar(evento.id)" class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
+                <button (click)="clickAgregar(evento.id)" class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800 button-hover">
                     <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                     Book Appoiment
                     </span>
@@ -33,11 +33,11 @@
             <p class="text-gray-60">Event Description</p>
         </div>
         <div class="md:w-2/5 w-full flex items-center justify-center p-4">
-            <button class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
-                <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                Book Appoiment
+            <button class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group button-hover">
+                <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md bg-gradient">
+                  Book Appointment
                 </span>
-            </button>
+              </button>
         </div>
     </div>
     

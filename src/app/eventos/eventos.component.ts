@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { EventosAService } from '../Services/eventos-a.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-eventos',
@@ -12,7 +13,7 @@ export class EventosComponent {
   public events: any;
   public datosEven: any = {};
 
-  constructor(private eventbriteService: EventosAService) { }
+  constructor(private eventbriteService: EventosAService, public route:Router) { }
 
   ngOnInit(): void {
     this.eventbriteService.lectura().subscribe(
@@ -27,10 +28,15 @@ export class EventosComponent {
   }
 
   clickAgregar(id:string) {
-    var us = sessionStorage.getItem('usuario')
+    var us = sessionStorage.getItem("usuario")
     var nom = JSON.parse(us?us:"");
     this.datosEven['nombreUsuario'] = nom.nombreUsuario;
     this.datosEven['id'] = id
-    this.eventbriteService.agregar(this.datosEven.id,this.datosEven.nombreUsuario)
+    this.eventbriteService.agregar(this.datosEven.id,this.datosEven.nombreUsuario).subscribe(
+      result => {
+        console.log(result)
+        this.route.navigateByUrl("/ODS/calendario/MisEventos")
+      }
+    )
   }
 }

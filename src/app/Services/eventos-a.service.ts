@@ -19,33 +19,27 @@ export class EventosAService {
     return this.http.get('https://localhost:7108/api/ControllerLecturaEvento', this.httpOtions);
   }
 
-  public miLectura(id:string, nombreUsuario:string): Observable<any> {
-    var data = {
-      id,
-      nombredeusuario: nombreUsuario
-    }
-    
-    var dat = JSON.stringify(data)
-    return this.http.post('https://localhost:7108/api/ControllerleerReservacion', dat, this.httpOtions);
+  public miLectura(nombreUsuario:string): Observable<any> {
+    return this.http.post(`https://localhost:7108/api/leerReservacion?evento=${nombreUsuario}`, this.httpOtions);
   }
 
   public eliminar(id:string, nombreUsuario:string): Observable<any> {
     var data = {
-      id,
+      id: id,
       nombredeusuario: nombreUsuario
     }
     
     var dat = JSON.stringify(data)
-    return this.http.post('https://localhost:7108/api/ControllerEliminarReservacion', dat, this.httpOtions);
+    return this.http.post('https://localhost:7108/api/EliminarReservacion', dat, this.httpOtions);
   }
 
   public agregar(id:string, nombreUsuario:string): Observable<any> {
     var data = {
-      id,
+      id: id,
       nombredeusuario: nombreUsuario
     }
     
     var dat = JSON.stringify(data)
-    return this.http.post('https://localhost:7108/api/ControllerReservaciones', dat,this.httpOtions);
+    return this.http.post('https://localhost:7108/api/ControllerReservaciones', dat, this.httpOtions);
   }
 }
